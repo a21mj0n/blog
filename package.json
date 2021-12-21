@@ -1,0 +1,36 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a21mj0n/blog.git"
+  },
+  "keywords": [
+    "blog",
+    "azitos"
+  ],
+  "author": "azimjon toirov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/a21mj0n/blog/issues"
+  },
+  "homepage": "https://github.com/a21mj0n/blog#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "express-fileupload": "^1.2.1",
+    "express-handlebars": "^6.0.2",
+    "express-handlebars-sections": "^1.0.1",
+    "mongoose": "^6.1.2",
+    "uuid": "^8.3.2"
+  }
+}
