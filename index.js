@@ -9,7 +9,7 @@ const app = express()
 
 app.use(express.json())
 app.use(express.static('static'))
-app.use(express.static('public'))
+app.use('/public', express.static(__dirname + '/public'));
 app.use(fileUpload({}))
 
 // view hanlebars

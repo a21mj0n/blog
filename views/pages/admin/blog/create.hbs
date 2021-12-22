@@ -1,0 +1,77 @@
+{{#section 'pageTitle'}} Create {{/section}}
+{{#section 'title'}} Admin | Blogs | Create {{/section}}
+{{#section 'action'}}
+<a href="/web/blog" type="button" class="btn btn-info btn-addon"><i class="fa fa-arrow-left"></i> Cancel</a>
+{{/section}}
+
+
+<div class="panel panel-white">
+  <div class="panel-heading clearfix">
+    <h4 class="panel-title">Creating Blog</h4>
+  </div>
+  <div class="panel-body">
+    <form class="form-horizontal" style="padding: 0 1rem;">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6">
+            <label class="control-label">Author</label>
+            <input type="text" class="form-control author" placeholder="author">
+          </div>
+          <div class="col-md-6">
+            <label class="control-label">Title</label>
+            <input type="text" class="form-control title" placeholder="title">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label">Image</label>
+        <input type="file" class="form-control picture" placeholder="Image" accept=".jpg, .jpeg">
+      </div>
+      <div class="form-group">
+        <label class="control-label">Content</label>
+        <div class="summernote"></div>
+      </div>
+      <div class="form-group">
+        <input type="submit" class="form-control btn-success submit-form" value="Submit" />
+      </div>
+    </form>
+  </div>
+</div>
+
+{{#section 'script'}}
+<script>
+  let file;
+
+  $('.picture').on('change', function (e) {
+    console.log(e)
+    file = e.target.files[0]
+    console.log($('.summernote').code())
+  })
+
+  $('.form-horizontal').submit(function (e) {
+    e.preventDefault();
+    const textAreaValue = $('.summernote').code()
+    const formData = new FormData()
+
+    formData.append('author', $('.author').val())
+    formData.append('title', $('.title').val())
+    formData.append('content', textAreaValue)
+    formData.append('picture', file)
+
+    $.ajax({
+      url: 'http://localhost:5000/api/blog',
+      method: "POST",
+      processData: false,
+      contentType: false,
+      data: formData,
+      success: function (response) {
+        console.log(response)
+        window.location.href = '/web/blog'
+      },
+      error: function (error) {
+        console.log(error)
+      }
+    })
+  })
+</script>
+{{/section}}
