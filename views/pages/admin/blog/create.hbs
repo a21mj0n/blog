@@ -9,6 +9,7 @@
   <div class="panel-heading clearfix">
     <h4 class="panel-title">Creating Blog</h4>
   </div>
+  <div class="errors"></div>
   <div class="panel-body">
     <form class="form-horizontal" style="padding: 0 1rem;">
       <div class="form-group">
@@ -40,15 +41,15 @@
 
 {{#section 'script'}}
 <script>
-  let file;
+  let file
+  let errors = []
 
-  $('.picture').on('change', function (e) {
+  document.querySelector('.picture').addEventListener('change', (e) => {
     console.log(e)
     file = e.target.files[0]
-    console.log($('.summernote').code())
   })
 
-  $('.form-horizontal').submit(function (e) {
+  document.querySelector('.form-horizontal').addEventListener('submit', async (e) => {
     e.preventDefault();
     const textAreaValue = $('.summernote').code()
     const formData = new FormData()
@@ -58,20 +59,24 @@
     formData.append('content', textAreaValue)
     formData.append('picture', file)
 
-    $.ajax({
-      url: 'http://localhost:5000/api/blog',
-      method: "POST",
-      processData: false,
-      contentType: false,
-      data: formData,
-      success: function (response) {
-        console.log(response)
-        window.location.href = '/web/blog'
-      },
-      error: function (error) {
-        console.log(error)
+    try {
+      const response = await axios.post('/api/blog', formData)
+
+      if (response.status === 200) {
+        await makeRoute('/web/blog')
+      } else {
+        errors.push(response.message)
+        await createError()
       }
-    })
+
+    } catch (e) {
+      if (e.response) {
+        errors.push(e.response.data.message)
+      } else {
+        errors.push(e.message)
+      }
+      await createError()
+    }
   })
 </script>
 {{/section}}

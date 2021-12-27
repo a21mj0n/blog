@@ -6,7 +6,8 @@ class BlogController {
             const post = await BlogService.create(req.body, req.files.picture)
             res.json(post)
         } catch (e) {
-            res.status(500).json(e)
+            console.log(e)
+            res.status(500).json({ message: e.message })
         }
     }
 
