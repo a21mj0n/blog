@@ -12,7 +12,7 @@
 
   <!-- Title -->
   <title>
-    {{{ _sections.title }}}
+    <%- block('title') %>
   </title>
 
   <!-- Styles -->
@@ -24,16 +24,12 @@
   <link href="../../public/assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
   <link href="../../public/assets/plugins/nvd3/nv.d3.min.css" rel="stylesheet">
   <link href="../../public/assets/plugins/datatables/css/jquery.datatables.min.css" rel="stylesheet" type="text/css" />
-  <link href="../../public/assets/plugins/datatables/css/jquery.datatables_themeroller.css" rel="stylesheet"
-    type="text/css" />
+  <link href="../../public/assets/plugins/datatables/css/jquery.datatables_themeroller.css" rel="stylesheet" type="text/css" />
   <link href="../../public/assets/plugins/summernote-master/summernote.css" rel="stylesheet" type="text/css" />
   <link href="../../public/assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css" />
-  <link href="../../public/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet"
-    type="text/css" />
-  <link href="../../public/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet"
-    type="text/css" />
-  <link href="../../public/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet"
-    type="text/css" />
+  <link href="../../public/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" type="text/css" />
+  <link href="../../public/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" type="text/css" />
+  <link href="../../public/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
 
   <!-- Theme Styles -->
   <link href="../../public/assets/css/space.min.css" rel="stylesheet">
@@ -51,95 +47,37 @@
 
   <!-- Page Container -->
   <div class="page-container">
-    <!-- Page Sidebar -->
-    <div class="page-sidebar">
-      <a class="logo-box" href="index.html">
-        <span>a21mjon Blog</span>
-        <i class="icon-radio_button_unchecked" id="fixed-sidebar-toggle-button"></i>
-        <i class="icon-close" id="sidebar-toggle-button-close"></i>
-      </a>
-      <div class="page-sidebar-inner">
-        <div class="page-sidebar-menu">
-          <ul class="accordion-menu">
-            <li class="active-page">
-              <a href="web/blog">
-                <i class="menu-icon icon-home4"></i><span>Blog</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="menu-icon icon-inbox"></i><span>Tags (soon)</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div><!-- /Page Sidebar -->
+
+    <%- include('./parts/sidebar-admin') %>
 
     <!-- Page Content -->
     <div class="page-content">
-      <!-- Page Header -->
-      <div class="page-header">
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <div class="logo-sm">
-                <a href="javascript:void(0)" id="sidebar-toggle-button"><i class="fa fa-bars"></i></a>
-                <a class="logo-box" href="index.html"><span>a21mjon Blog</span></a>
-              </div>
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <i class="fa fa-angle-down"></i>
-              </button>
-            </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
+      <%- include('./parts/header-admin') %>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
-                <li><a href="javascript:void(0)" id="collapsed-sidebar-toggle-button"><i class="fa fa-bars"></i></a>
-                </li>
-                <li><a href="javascript:void(0)" id="toggle-fullscreen"><i class="fa fa-expand"></i></a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown user-dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                    aria-expanded="false"><img src="http://via.placeholder.com/36x36" alt="" class="img-circle"></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Calendar</a></li>
-                    <li><a href="#"><span class="badge pull-right badge-danger">42</span>Messages</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Account Settings</a></li>
-                    <li><a href="#">Log Out</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
-        </nav>
-      </div><!-- /Page Header -->
       <!-- Page Inner -->
       <div class="page-inner">
         <div class="page-title">
           <div class="row">
             <div class="col-md-6">
               <h3 class="breadcrumb-header">
-                {{{ _sections.pageTitle }}}
+
+                <%- block('pageTitle') %>
+
               </h3>
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-end" style="margin: 12px 0 24px 0">
-              {{{ _sections.action }}}
+
+              <%- block('action') %>
+
             </div>
           </div>
         </div>
         <div id="main-wrapper">
-          {{{ body }}}
+
+          <%- body -%>
+
         </div><!-- Main Wrapper -->
-        <div class="page-footer">
-          <p>Made with <i class="fa fa-heart"></i> by stacks</p>
-        </div>
       </div><!-- /Page Inner -->
     </div><!-- /Page Content -->
   </div><!-- /Page Container -->
@@ -164,8 +102,7 @@
   <script src="../../public/assets/plugins/chartjs/chart.min.js"></script>
   <script src="../../public/assets/js/space.min.js"></script>
   <script src="../../public/assets/plugins/datatables/js/jquery.datatables.min.js"></script>
-  {{!--
-  <script src="../../public/assets/js/pages/dashboard.js"></script> --}}
+
   <script src="../../public/assets/js/pages/table-data.js"></script>
   <script src="../../public/assets/js/pages/form-elements.js"></script>
   <script src="../../public/assets/plugins/summernote-master/summernote.min.js"></script>
@@ -174,7 +111,8 @@
   <script src="../../public/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
   <script src="../../public/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
 
-  {{{_sections.script}}}
+  <%- block('script') %>
+
 </body>
 
 </html>

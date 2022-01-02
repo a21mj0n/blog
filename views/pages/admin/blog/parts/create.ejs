@@ -1,0 +1,39 @@
+<script>
+  let file
+  let errors = []
+
+  document.querySelector('.picture').addEventListener('change', (e) => {
+    console.log(e)
+    file = e.target.files[0]
+  })
+
+  document.querySelector('.form-horizontal').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const textAreaValue = $('.summernote').code()
+    const formData = new FormData()
+
+    formData.append('author', $('.author').val())
+    formData.append('title', $('.title').val())
+    formData.append('content', textAreaValue)
+    formData.append('picture', file)
+
+    try {
+      const response = await axios.post('/api/blog', formData)
+
+      if (response.status === 200) {
+        await makeRoute('/web/blog')
+      } else {
+        errors.push(response.message)
+        await createError()
+      }
+
+    } catch (e) {
+      if (e.response) {
+        errors.push(e.response.data.message)
+      } else {
+        errors.push(e.message)
+      }
+      await createError()
+    }
+  })
+</script>

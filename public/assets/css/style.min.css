@@ -1,1 +1,1 @@
-body{background-color:red;font-size:24px}
+*{margin:0;padding:0}* h1,* h2,* h3,* h4,* h5,* p{margin:0}:root[data-theme=light]{--color:#fff;--bgColor:#000}:root[data-theme=dark]{--color:#000;--bgColor:#fff}body{background-color:var(--bgColor);font-size:16px;font-weight:400;line-height:normal;color:var(--color)}body nav .container{background-color:var(--bgColor);display:flex;justify-content:space-between}body nav .container .brand{font-size:24px;font-weight:700;line-height:normal;color:var(--color);padding:10px}body nav .container .theme-switcher input{width:40px;height:40px}

@@ -1,3 +1,7 @@
-const test = 'test'
+const html = document.querySelector('html');
+html.dataset.theme = 'dark';
 
-console.log(test)
+function switchTheme(target) {
+  console.log(target);
+  html.dataset.theme = target.checked ? 'light' : 'dark';
+}
