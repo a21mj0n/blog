@@ -1,12 +1,12 @@
 <% layout('layouts/main') %>
 
-<h2>Hello EJS working</h2>
+<h2 class="text-3xl font-bold underline text-green-400 p-14">Hello EJS working</h2>
 
 <ul>
-  <% blogs.forEach(blog => { %>
-  <li>
-    <%- blog.title %>
-    <img src="<%- blog.picture %>" alt="">
-  </li>
-  <% }) %>
+    <% blogs.forEach(blog => { %>
+        <li>
+            <%- blog.title %>
+            <img src="<%- blog.picture %>" alt="">
+        </li>
+    <% }) %>
 </ul>

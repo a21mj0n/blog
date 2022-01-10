@@ -1,11 +1,45 @@
-# A21MJON | BLOG
+###A21MJON | BLOG
+<hr>
 
-Project commands list
+**In this project used technologies like:** 
+<ol>
+  <li><b>templating:</b> ejs</li>
+  <li><b>server:</b> express, node js</li>
+  <li><b>styling:</b> tailwind-css</li>
+  <li><b>building scss and js files:</b> gulp js</li>
+</ol>
+
+<hr>
+
+###Project commands list
+
+First clone repository
+
+`git clone https://github.com/a21mj0n/blog.git`
+
+Create own `.env` file like `.env.example` and set your settings `DB_URL` (mongoDB URI), `PORT`
+
+Install all packages
 ```
-1. First clone repository
-2. run npm install
-3. run npm start for production mode
-4. run npm dev for development mode
-5. run npm gulp:dev for watch scss and js files
-6. Design file is https://www.figma.com/file/6OUrqgvmwrlRp3cguYq4Ff/A-blog-template-(Community)?node-id=0%3A1
+npm install
 ```
+Generating and watching scss files 
+```
+npm run gulp:dev
+```
+Watching tailwindcss
+```
+npm run tailwindcss:watch
+```
+Development mode
+```
+npm run dev
+```
+Production mode
+```
+npm run start
+```
+Project Design <br>
+`https://www.figma.com/file/6OUrqgvmwrlRp3cguYq4Ff/A-blog-template-(Community)?node-id=0%3A1`
+
+
