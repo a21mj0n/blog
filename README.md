@@ -1,4 +1,4 @@
-###A21MJON | BLOG
+A21MJON | BLOG
 <hr>
 
 **In this project used technologies like:** 
@@ -11,7 +11,7 @@
 
 <hr>
 
-###Project commands list
+Project commands list
 
 First clone repository
 
