@@ -1,9 +1,13 @@
+const BlogService = require('../../services/BlogService')
+
 class HomeController {
 
-  index(req, res) {
-    console.log('home controller');
-    return res.render('frontend/home', {
-      layout: 'main'
+  async index(req, res) {
+    
+    const blogs = await BlogService.getAll();
+
+    return res.render('pages/frontend/home', {
+      blogs,
     })
   }
 

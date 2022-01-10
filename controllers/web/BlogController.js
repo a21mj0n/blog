@@ -1,21 +1,16 @@
 class BlogController {
 
   index(req, res) {
-    return res.render('admin/blog/index', {
-      layout: 'admin'
-    })
+    return res.render('pages/admin/blog/index')
   }
 
   create(req, res) {
-    return res.render('admin/blog/create', {
-      layout: 'admin'
-    })
+    return res.render('pages/admin/blog/create')
   }
 
   detail(req, res) {
     console.log(req.params.id);
-    return res.render('admin/blog/detail', {
-      layout: 'admin',
+    return res.render('pages/admin/blog/detail', {
       id: req.params.id
     })
   }

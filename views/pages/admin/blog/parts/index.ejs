@@ -1,0 +1,60 @@
+<script>
+  let blogs = [],
+    errors = [];
+
+  const generateTable = (blogs) => {
+    if (blogs.length > 0) {
+      blogs.forEach(blog => {
+        const tr = `
+        <tr>
+          <td> <img width="200px" src="/${blog.picture}"> </td>
+          <td> ${blog.author} </td>
+          <td> ${blog.title} </td>
+          <td width="20%">  ${blog.content} </td>
+          <td> 
+            <button class="btn btn-danger btn-addon">
+              <i class="fa fa-trash"></i>
+            </button> 
+          </td>
+        </tr>
+      `
+        document.querySelector('#example tbody').innerHTML += tr
+      })
+    }
+  }
+
+  const loader = (isLoading = false) => {
+    if (!isLoading) {
+      document.querySelector('.loader').style.display = 'none'
+    }
+  }
+
+  const getBlogs = async () => {
+    try {
+      loader(true)
+      const response = await axios.get('/api/blog')
+
+      const { data: blog } = response
+
+      if (response.status === 200) {
+        loader(false)
+        await generateTable(blog)
+      } else {
+        loader(false)
+        errors.push(response.message)
+        await createError()
+      }
+
+    } catch (e) {
+      loader(false)
+      if (e.response) {
+        errors.push(e.response.data.message)
+      } else {
+        errors.push(e.message)
+      }
+      await createError()
+    }
+  }
+
+  getBlogs()
+</script>

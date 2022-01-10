@@ -1,5 +1,45 @@
+@import 'mixins';
+
+* {
+  margin: 0;
+  padding: 0;
+  
+  h1,h2,h3,h4,h5,p {
+    margin: 0;
+  }
+}
+
+:root[data-theme='light'] {
+  --color: #fff;
+  --bgColor: #000;
+}
+
+:root[data-theme='dark'] {
+  --color: #000;
+  --bgColor: #fff;
+}
+
 body {
-  background-color: green;
-  font-size: 24px;
-  display: grid;
+  background-color: var(--bgColor);
+  @include font;
+
+  nav {
+    .container {
+      background-color: var(--bgColor);
+      display: flex;
+      justify-content: space-between;
+
+      .brand {
+        @include font(24px, bold);
+        padding: 10px;
+      }
+
+      .theme-switcher {
+        input {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+  }
 }

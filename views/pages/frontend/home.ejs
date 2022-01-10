@@ -1,0 +1,12 @@
+<% layout('layouts/main') %>
+
+<h2>Hello EJS working</h2>
+
+<ul>
+  <% blogs.forEach(blog => { %>
+  <li>
+    <%- blog.title %>
+    <img src="<%- blog.picture %>" alt="">
+  </li>
+  <% }) %>
+</ul>
