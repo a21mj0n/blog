@@ -12,7 +12,7 @@ app.use(express.static('static'))
 app.use('/public', express.static(__dirname + '/public'));
 app.use(fileUpload({}))
 
-// view hanlebars
+// view handlebars
 app.engine('hbs', exphbs.engine({
     layoutsDir: path.join(__dirname, 'views', 'layouts'),
     extname: '.hbs',
